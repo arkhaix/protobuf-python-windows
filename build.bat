@@ -3,6 +3,9 @@
 pushd "%~dp0"
 
 
+set PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=cpp
+
+
 rem Build protobuf
 
 cd protobuf\cmake
@@ -40,6 +43,7 @@ set PROTOC=..\..\export\bin\protoc.exe
 robocopy ..\.. . _*.bat
 call _build.bat
 call _build_ext.bat
+python setup.py install
 cd ..\..
 
 
