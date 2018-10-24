@@ -7,10 +7,10 @@ rem Build protobuf
 
 cd protobuf\cmake
 md .build & cd .build
-cmake .. -G "Visual Studio 15 2017 Win64" -DCMAKE_INSTALL_PREFIX=../../../export -Dprotobuf_BUILD_TESTS=OFF -Dprotobuf_BUILD_SHARED_LIBS=OFF -Dprotobuf_MSVC_STATIC_RUNTIME=ON
+cmake .. -G "Visual Studio 15 2017 Win64" -DCMAKE_INSTALL_PREFIX=../../../export -Dprotobuf_BUILD_TESTS=OFF -Dprotobuf_BUILD_SHARED_LIBS=OFF -Dprotobuf_MSVC_STATIC_RUNTIME=OFF
 cmake --build . --config Release
 cmake --build . --config Release --target install
-cd ..\..
+cd ..\..\..
 
 
 rem Build protobuf - NMake edition
@@ -30,6 +30,7 @@ rem cd protobuf\python
 rem set PROTOC=..\..\export\bin\protoc.exe
 rem copy ..\cmake\.build\Release\libprotobuf.lib .\protobuf.lib
 rem python setup.py build --cpp_implementation
+rem cd ..\..
 
 
 rem Build pyext - Rebecca's manual way
@@ -39,6 +40,7 @@ set PROTOC=..\..\export\bin\protoc.exe
 robocopy ..\.. . _*.bat
 call _build.bat
 call _build_ext.bat
+cd ..\..
 
 
 popd
