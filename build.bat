@@ -3,6 +3,14 @@
 pushd "%~dp0"
 
 
+rem Make sure PYTHON27 is set to the Python install path
+
+if defined PYTHON27 goto pyok
+echo You must set PYTHON27 to your python path first (eg. 'set PYTHON27=C:\Python27')
+goto :eof
+:pyok
+
+
 set PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=cpp
 set PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION_VERSION=2
 
