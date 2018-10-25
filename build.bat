@@ -4,9 +4,10 @@ pushd "%~dp0"
 
 
 set PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=cpp
+set PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION_VERSION=2
 
 
-rem Build protobuf
+rem Build protobuf - cmake
 
 cd protobuf\cmake
 md .build & cd .build
@@ -16,7 +17,7 @@ cmake --build . --config Release --target install
 cd ..\..\..
 
 
-rem Build protobuf - NMake edition
+rem Build protobuf - NMake
 
 rem cd protobuf\cmake
 rem md build & cd build
@@ -27,7 +28,7 @@ rem nmake install
 rem cd ..\..\..
 
 
-rem Build pyext - Broken distutils way
+rem Build pyext - distutils (doesn't work)
 
 rem cd protobuf\python
 rem set PROTOC=..\..\export\bin\protoc.exe
@@ -43,8 +44,14 @@ set PROTOC=..\..\export\bin\protoc.exe
 robocopy ..\.. . _*.bat
 call _build.bat
 call _build_ext.bat
-python setup.py install
+rem python setup.py install
 cd ..\..
+
+
+rem Copy pyds to export
+
+robocopy protobuf\python\build\lib.win-amd64-2.7\google\protobuf\internal export\bin _api_implementation.pyd
+robocopy protobuf\python\build\lib.win-amd64-2.7\google\protobuf\pyext export\bin _message.pyd
 
 
 popd
