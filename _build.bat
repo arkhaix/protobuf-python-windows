@@ -45,9 +45,9 @@
 ..\install\bin\protoc.exe -I../src -I. --python_out=. ../src/google/protobuf/type.proto
 ..\install\bin\protoc.exe -I../src -I. --python_out=. ../src/google/protobuf/wrappers.proto
 
-touch google\protobuf\compiler\__init__.py
-touch google\protobuf\util\__init__.py
-touch google\__init__.py
+type nul >> google\protobuf\compiler\__init__.py
+type nul >> google\protobuf\util\__init__.py
+type nul >> google\__init__.py
 
 mkdir build\lib.win-amd64-2.7
 mkdir build\lib.win-amd64-2.7\google

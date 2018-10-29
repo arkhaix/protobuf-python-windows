@@ -56,6 +56,10 @@ rem python setup.py install
 cd ..\..
 
 
+rem Export pyext headers
+robocopy protobuf\python\google\protobuf\pyext export\include\google\protobuf\pyext *.h
+
+
 rem Copy pyds to export
 
 robocopy protobuf\python\build\lib.win-amd64-2.7\google\protobuf\internal export\bin _api_implementation.pyd
